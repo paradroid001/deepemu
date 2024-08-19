@@ -1,6 +1,9 @@
 FROM ubuntu:jammy
 
 RUN apt update && apt install -y git \
+    zip \
+    7zip \
+    file \
     binutils \
     build-essential \
     gdb-multiarch \
@@ -11,7 +14,8 @@ RUN apt update && apt install -y git \
     gcc-10-mips-linux-gnu \
     binutils-mips-linux-gnu \
     gcc-11-powerpc64-linux-gnu \
-    binutils-powerpc-linux-gnu
+    binutils-powerpc-linux-gnu \
+
 
 
 WORKDIR /test
