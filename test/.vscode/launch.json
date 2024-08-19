@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "In-container remote debugging (ARM)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "basic.arm", //symbols
+            //"target": "desertemu-emulator-1:9000",
+            //"remote": true
+            //""
+            "cwd": "/test",
+            "stopAtEntry": true,
+            "stopAtConnect": true,
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb-multiarch",
+                "miDebuggerServerAddress": "desertemu-emulator-1:9000",
+                "setupCommands": [{
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true,
+            }]
+        }]
+}

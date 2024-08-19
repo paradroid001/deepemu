@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:jammy
 
 RUN apt update && apt install -y git \
     binutils \
@@ -7,7 +7,12 @@ RUN apt update && apt install -y git \
     #gcc-arm-linux-gnueabi \
     #binutils-arm-linux-gnueabi \
     gcc-arm-linux-gnueabihf \
-    gcc-9-aarch64-linux-gnu
+    gcc-9-aarch64-linux-gnu \
+    gcc-10-mips-linux-gnu \
+    binutils-mips-linux-gnu \
+    gcc-11-powerpc64-linux-gnu \
+    binutils-powerpc-linux-gnu
+
 
 WORKDIR /test
 CMD ["tail", "-f", "/dev/null"]
