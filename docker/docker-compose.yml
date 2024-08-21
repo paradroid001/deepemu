@@ -14,3 +14,12 @@ services:
       dockerfile: Dockerfile.yml
     volumes:
       - ../test:/test
+  buildroot:
+    build:
+      context: ./buildroot
+      dockerfile: Dockerfile.yml
+    volumes:
+     - ../buildroot/output:/buildroot_output
+     - ../buildroot/data:/root/buildroot/data
+     - ../buildroot/external:/root/buildroot/external
+     - ../buildroot/rootfs_overlay:/root/buildroot/rootfs_overlay
