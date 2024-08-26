@@ -20,9 +20,12 @@ def save_input():
 #recieve file upload from user
 def upload():
     file = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
-    if not file.endswith('.txt'):
-        return
-    print("selected:", file)
+    if file:
+        with open(file, 'r') as f:
+            content = f.read()
+        entry.delete(0, END)
+        entry.insert(0, content.strip())
+        print("selected:", file)
 
 #initialise gui window
 window = Tk()
@@ -36,6 +39,7 @@ upload_button.pack(pady=5)
 #entry field
 entry = Entry()
 entry.pack(pady=5)
+
 
 #submit button
 submit = Button(window, text="submit", command=save_input)
