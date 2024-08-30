@@ -27,21 +27,39 @@ def upload():
         entry.insert(0, content.strip())
         print("selected:", file)
 
+def select_dir():
+    directory = filedialog.askdirectory()  # Open a dialog to select a directory
+    if directory:
+        libchoice.config(text=directory) 
+
+
 #initialise gui window
 window = Tk()
-window.geometry("250x250")
+window.geometry("250x350")
 window.title("DesertEMU")
 
 #upload buton
-upload_button = Button(window, text="Upload", command=upload)
+upload_button = Button(window, text="Upload config file", command=upload)
 upload_button.pack(pady=5)
 
 #entry field
 entry = Entry()
 entry.pack(pady=5)
 
+##ARCHITECTURE SELECTION
+arch = Comb
 
-#submit button
+
+##DIRECTORY SELECTION SECTION
+dir = Button(window, text="Select dir", command=select_dir)
+dir.pack(pady=5)
+
+libchoice = Label(window, text="No directory selected", wraplength=400, justify="left")
+libchoice.pack(pady=5)
+
+
+
+##SUBMIT BUTTON SECTION
 submit = Button(window, text="submit", command=save_input)
 submit.pack(side=BOTTOM)
 
