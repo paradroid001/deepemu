@@ -1,6 +1,9 @@
 FROM ubuntu:jammy
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt update && apt install -y git \
+    wget \
     zip \
     7zip \
     file \
@@ -15,9 +18,7 @@ RUN apt update && apt install -y git \
     gcc-10-mips-linux-gnu \
     binutils-mips-linux-gnu \
     gcc-11-powerpc64-linux-gnu \
-    binutils-powerpc-linux-gnu \
-
-
+    binutils-powerpc-linux-gnu
 
 WORKDIR /test
 CMD ["tail", "-f", "/dev/null"]
