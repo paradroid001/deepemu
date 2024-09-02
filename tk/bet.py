@@ -8,8 +8,26 @@ def button_callback():
 
 #write input to terminal
 def save_config():
-    usr = entry.get()
-    print(usr)
+    with open("data.json", "r") as jsonFile:
+        data = json.load(jsonFile)
+
+    data["Architecture"] = clicked.get()
+    data["Build tools"] = click_tools.get()
+    data["Directory"] = libchoice.cget("text")
+    data["Container prefix"] = entry.get()
+    data["libc"] = click_lib.get()
+
+
+    with open("data.json", "w") as jsonFile:
+        json.dump(data, jsonFile)
+    
+def load_config():
+    f = open('data.json')
+    data = json.load(f)
+    for i in data['Architecture']:
+        print(i)
+    f.close()
+    
 
     
 def select_dir():
@@ -27,6 +45,7 @@ options = [
 ]
 
 
+
 # build tools
 build_tools = [ 
     "Build Tools", 
@@ -42,14 +61,14 @@ libc_build = [
 ]
 
 app = customtkinter.CTk()
-app.geometry("400x450")
+app.geometry("400x550")
 
 ##ARCHITECTURE SELECTION
 building = Label(app, text="Select build tools ")
 building.pack(pady=5)
 
 
-# Create Dropdown menu 
+# Create Dropdown menu submit
 # initial menu text 
 # datatype of menu text 
 click_tools = StringVar() 
@@ -105,11 +124,12 @@ buttons_frame = customtkinter.CTkFrame(app)
 buttons_frame.pack(pady=20)
 
 #save configc buton
-button = customtkinter.CTkButton(buttons_frame, text="load config", command=save_config)
+button = customtkinter.CTkButton(buttons_frame, text="load config", command=load_config)
 button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
 
 #load config buton
-button = customtkinter.CTkButton(buttons_frame, text="save config", command=submit)
+
+button = customtkinter.CTkButton(buttons_frame, text="save config", command=save_config)
 button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
 
 
