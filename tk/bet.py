@@ -22,10 +22,12 @@ def save_config():
         json.dump(data, jsonFile)
     
 def load_config():
-    f = open('data.json')
+    jason = filedialog.askopenfile(filetypes=[("Json files", "*.json")])  # Open a dialog to select a directory
+    
+    f = open(jason)
     data = json.load(f)
     for i in data['Architecture']:
-        print(i)
+        clicked = data['Architecture']
     f.close()
     
 
