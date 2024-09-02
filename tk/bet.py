@@ -23,12 +23,20 @@ def save_config():
     
 def load_config():
     jason = filedialog.askopenfile(filetypes=[("Json files", "*.json")])  # Open a dialog to select a directory
-    
-    f = open(jason)
-    data = json.load(f)
-    for i in data['Architecture']:
-        clicked = data['Architecture']
-    f.close()
+    if jason:
+        data = json.load(jason)
+        arch_op = data.get('Architecture',[])
+        if isinstance(arch_op,str):
+            arch_op = [arch_op]
+
+        if arch_op:
+            clicked.set(arch_op[0])
+            arch['menu'].delete(0,'end')
+
+            for option in arch_op:
+                arch['menu'].add_command(label=option, command= lambda option=option: clicked.set(value))
+
+        jason.close
     
 
     
