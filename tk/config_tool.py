@@ -52,7 +52,7 @@ def load_config():
 def select_dir():
     directory = filedialog.askdirectory()  # Open a dialog to select a directory
     if directory:
-        libchoice.config(text=directory) 
+        libchoice.configure(text=directory) 
 
 def confirm():
     con_label = Label(app, text="Saved!", fg="green")
@@ -89,7 +89,7 @@ app = customtkinter.CTk()
 app.geometry("400x550")
 
 ##ARCHITECTURE SELECTION
-building = Label(app, text="Select build tools ")
+building = customtkinter.CTkLabel(app, text="Select build tools ", text_color=("black"), fg_color=("white"),corner_radius=8)
 building.pack(pady=5)
 
 
@@ -102,7 +102,7 @@ build = OptionMenu( app , click_tools , *build_tools )
 build.pack() 
 
 ##ARCHITECTURE SELECTION
-library = Label(app, text="Choose your libc")
+library = customtkinter.CTkLabel(app, text="Choose your libc", text_color="black", fg_color="white", corner_radius=8)
 library.pack(pady=5)
 
 
@@ -115,7 +115,7 @@ build_lib = OptionMenu( app , click_lib , *libc_build )
 build_lib.pack() 
 
 ##ARCHITECTURE SELECTION
-prefix = Label(app, text="Enter container prefix")
+prefix = customtkinter.CTkLabel(app, text="Enter container prefix",text_color="black", fg_color="white", corner_radius=8)
 prefix.pack(pady=5)
 
 entry = customtkinter.CTkEntry(app, placeholder_text="Enter here")
@@ -123,7 +123,8 @@ entry.pack(padx=20, pady=20)
 
 
 ##ARCHITECTURE SELECTION
-arch_label = Label(app, text="Select your required architecture")
+arch_label = customtkinter.CTkLabel(app, text="Select your required architecture",text_color="black", fg_color="white", corner_radius=8)
+prefix.pack(pady=5)
 arch_label.pack(pady=5)
 
 
@@ -140,7 +141,7 @@ arch.pack()
 button = customtkinter.CTkButton(app, text="select directory", command=select_dir)
 button.pack(padx=20, pady=20)
 
-libchoice = Label(app, text="No directory selected", wraplength=400, justify="left")
+libchoice = customtkinter.CTkLabel(app, text="No directory selected", wraplength=400, justify="left")
 libchoice.pack(pady=5)
 
 
@@ -148,7 +149,7 @@ libchoice.pack(pady=5)
 buttons_frame = customtkinter.CTkFrame(app)
 buttons_frame.pack(pady=20)
 
-#save configc buton
+#load configc buton
 button = customtkinter.CTkButton(buttons_frame, text="load config", command=load_config)
 button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
 

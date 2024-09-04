@@ -1,1 +1,1 @@
-{"Architecture": "ARM", "Build tools": "Emualtion", "Directory": "/Applications", "Container prefix": "pre", "libc": "glibc"}
+{"Architecture": "x86", "Build tools": "Emualtion", "Directory": "No directory selected", "Container prefix": "ddd", "libc": "musl"}
