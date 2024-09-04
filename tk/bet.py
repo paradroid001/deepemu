@@ -3,9 +3,6 @@ from tkinter import *
 from tkinter import filedialog, StringVar
 import json
 
-def button_callback():
-    print("button clicked")
-
 #write input to terminal
 def save_config():
     with open("data.json", "r") as jsonFile:
@@ -20,21 +17,33 @@ def save_config():
 
     with open("data.json", "w") as jsonFile:
         json.dump(data, jsonFile)
+
+    confirm()
     
 def load_config():
     jason = filedialog.askopenfile(filetypes=[("Json files", "*.json")])  # Open a dialog to select a directory
     if jason:
         data = json.load(jason)
-        arch_op = data.get('Architecture',[])
-        if isinstance(arch_op,str):
-            arch_op = [arch_op]
+        config_map = {
+            'Architecture': clicked,
+            'Build tools': click_tools,
+            'libc': click_lib
+        }
 
-        if arch_op:
-            clicked.set(arch_op[0])
-            arch['menu'].delete(0,'end')
+        for key, var in config_map.items():
+            value = data.get(key,'')
+            if value:
+                var.set(value)
 
-            for option in arch_op:
-                arch['menu'].add_command(label=option, command= lambda option=option: clicked.set(value))
+        directory = data.get("Directory", "")
+        if directory:
+            libchoice.config(text=directory)
+
+        
+        con_prefix = data.get("Container prefix", "")
+        if con_prefix:
+            entry.delete(0, END)  # Clear the entry first
+            entry.insert(0, con_prefix)
 
         jason.close
     
@@ -44,6 +53,12 @@ def select_dir():
     directory = filedialog.askdirectory()  # Open a dialog to select a directory
     if directory:
         libchoice.config(text=directory) 
+
+def confirm():
+    con_label = Label(app, text="Saved!", fg="green")
+    con_label.pack()
+
+    app.after(2000, con_label.destroy)
 
 # Dropdown menu options 
 options = [ 
