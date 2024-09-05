@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -34,7 +34,9 @@ RUN apt-get update && \
     bison \
     flex \
     libssl-dev \
-    libfdt-dev
+    libfdt-dev \
+    net-tools \
+    texinfo
 
 RUN apt install -y file
 
@@ -57,17 +59,18 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
 USER br_user
-
-RUN git clone git://git.buildroot.net/buildroot --depth=1 --branch=2024.05.x /home/br_user/buildroot
+RUN mkdir /home/br_user/buildroot
+#RUN git clone git://git.buildroot.net/buildroot --depth=1 --branch=2024.05.x /home/br_user/buildroot
+ADD https://buildroot.org/downloads/buildroot-2015.08-rc2.tar.gz /home/br_user/buildroot
 
 WORKDIR /home/br_user/buildroot
 
-ENV O=/buildroot_output
+#ENV O=/buildroot_output
 
 RUN touch .config
 RUN touch kernel.config
 
-VOLUME /home/br_user/buildroot/dl
+#VOLUME /home/br_user/buildroot/dl
 #VOLUME /buildroot_output
 
 #RUN ["/bin/bash"]
