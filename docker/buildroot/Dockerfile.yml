@@ -58,7 +58,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER br_user
 
-RUN git clone git://git.buildroot.net/buildroot --depth=1 --branch=2024.05.x /home/br_user/buildroot
+RUN git clone https://git.buildroot.net/buildroot --depth=1 --branch=2024.05.x /home/br_user/buildroot
 
 WORKDIR /home/br_user/buildroot
 
