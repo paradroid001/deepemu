@@ -3,7 +3,8 @@ FROM ubuntu:jammy
 RUN apt update && apt install -y git \
 qemu \
 qemu-user-static \
-qemu-system \
+#qemu-system \
+qemu-system-mips \
 libglib2.0-0  \
 libglib2.0-dev \
 autoconf \

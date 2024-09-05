@@ -1,0 +1,60 @@
+FROM ubuntu:jammy
+
+ARG GCC_VERSION="3.4.0"
+ARG BINUTILS_VERSION="2.15"
+ARG UCLIBC_VERSION="0.9.33.2"
+ARG LINUX_KERNEL_VERSION="2.6.36"
+
+
+RUN apt update && apt install -y \
+    git \
+    zip \
+    7zip \
+    file \
+    build-essential \
+    gdb-multiarch \
+    sed \
+	make \
+	build-essential \
+	diffutils \
+	g++ \
+	bash \
+	patch \
+	gzip \
+	bzip2 \
+	perl \
+	tar \
+	cpio \
+	unzip \
+	rsync \
+	file \
+	bc \
+	findutils \
+	wget \
+	ncurses-dev \
+    bison \
+	flex \
+	gettext \
+	texinfo
+
+# Download and install gcc
+RUN wget https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz && \
+    tar -xvf gcc-${GCC_VERSION}.tar.gz && \
+    mkdir gcc-${GCC_VERSION}/gcc-build && \
+    cd gcc-${GCC_VERSION}/gcc-build && \
+    ../configure --prefix=/usr/
+
+# Download and install binutils
+RUN wget https://ftp.gnu.org/gnu/binutils/binutils-${BINUTILS_VERSION}.tar.gz && \
+    tar -xvf binutils-${BINUTILS_VERSION}.tar.gz && \
+    cd binutils-${BINUTILS_VERSION} && \
+
+# Download and install uClibc
+RUN wget https://uclibc.org/downloads/uClibc-${UCLIBC_VERSION}.tar.xz
+
+# Download linux kernel
+RUN version="$(cut -d '.' -f 1,2 <<< $LINUX_KERNEL_VERSION)" && \
+    wget https://mirrors.edge.kernel.org/pub/linux/kernel/v${version}/linux-${LINUX_KERNEL_VERSION}.tar.gz
+
+WORKDIR /test
+CMD ["tail", "-f", "/dev/null"]
