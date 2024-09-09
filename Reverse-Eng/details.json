@@ -1,3 +1,10 @@
 {
-  "created": "2023-10-31 17:55:58\n\n"
+  "header_size": "64 bytes",
+  "created": "2018-09-21 12:25:06",
+  "image_size": "851968 bytes",
+  "OS": "Linux",
+  "CPU": "MIPS",
+  "image_type": "OS Kernel Image",
+  "compression_type": "lzma",
+  "image_name": "Linux Kernel"
 }
