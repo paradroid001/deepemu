@@ -1,0 +1,81 @@
+<p><strong>Fixed Issues:</strong></p>
+
+<ul>
+	<li>Fixed issue CERT - DNS Registration and Auto discovery Vulnerability and DNS rebinding attack.</li>
+	<li>Upgraded OpenSSL package.</li>
+	<li>Fixed Session ID vulnerability.</li>
+</ul>
+
+<p><strong>Known issues:</strong></p>
+
+<ul>
+	<li>AP in client mode scans third party APs configured with WPA2PSK / WPAPSK authentication less when client mode AP is configured with OPEN-NONE or OPEN-WEP authentication and vice versa in congested environment..</li>
+</ul>
+
+<p><strong>NOTES:</strong></p>
+
+<ol>
+	<li>The default IP address of the AP is 192.168.0.100</li>
+	<li>Restoring config file which has AP name with hyphen at the starting and end will not set the AP hostname properly.</li>
+	<li>AP name configured with hyphen in the old FW version after firmware upgrade to latest image will not display proper AP name.</li>
+	<li>In the following scenarios, AP is expected to reboot automatically for the configuration to take effect.
+	<ul>
+		<li>Change of Country/Region&nbsp;</li>
+		<li>After Firmware upgrade&nbsp;</li>
+		<li>After Restore Configuration Settings&nbsp;</li>
+		<li>Reset factory defaults&nbsp;</li>
+		<li>Change the mode from AP to Client and vice versa&nbsp;</li>
+	</ul>
+	</li>
+	<li>WAC120 can operate in either AP or Client mode at any given time but not as both.</li>
+</ol>
+
+<p><strong>Installation</strong></p>
+
+<p><b>Note:</b>&nbsp;&nbsp;Before you upgrade to 2.1.7, Upgrade to 2.0.5 release. Please visit the link to download the Firmware version mentioned&nbsp;<a href="http://support.netgear.com/product/WAC120">http://support.netgear.com/product/WAC120</a></p>
+
+<ol>
+	<li>Download the new software and save it to a convenient folder location.<br />
+	The Firmware File name after extracting is&nbsp;<strong>wac120_v2.1.7_firmware.tar</strong><br />
+	<br />
+	<strong>Download Link:</strong>&nbsp;<u><a href="http://www.downloads.netgear.com/files/GDC/WAC120/WAC120_firmware_V2.1.7.zip" target="_blank">http://www.downloads.netgear.com/files/GDC/WAC120/WAC120_firmware_V2.1.7.zip</a></u></li>
+	<li>Login to the access point web management GUI.</li>
+	<li>&nbsp;Select&nbsp;Maintenance&nbsp;&gt;&nbsp;Upgrade&nbsp;&gt;&nbsp;Firmware Upgrade.</li>
+	<li>Click Browse and browse to the location of the software upgrade file that you just downloaded.</li>
+	<li>Click Apply to initiate upgrade process.&nbsp;<strong>Note</strong>:&nbsp;The upgrade process typically takes at least 6 minutes when upgraded to&nbsp;<strong>V2.0.5</strong>. Any upgrade from V2.0.5 to other Firmware version will take approximately 3 minutes.</li>
+</ol>
+
+<p><span style="color:#ff0000;">WARNING: Do NOT interrupt or power off the computer until the upgrade process is completed. Wait for the AP to reboot.</span></p>
+
+<p><span style="color:#ff0000;"><strong>READ THIS BEFORE ATTEMPT TO UPGRADE</strong></span></p>
+
+<table border="1" cellpadding="0" cellspacing="0" width="552">
+	<tbody>
+		<tr>
+			<td>
+			<p>Case</p>
+			</td>
+			<td>
+			<p>Notes</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Brand new AP to Standalone</p>
+			</td>
+			<td>
+			<p>First update to 2.0.5, then update to 2.1.7</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p>Working Standalone to Standalone</p>
+			</td>
+			<td>
+			<p>Before updating to 2.1.7, first update to 2.0.5</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p align="left">This product includes software code developed by third parties, including software code subject to the GNU General Public License (&quot;GPL&quot;) or GNU Lesser General Public License (&quot;LGPL&quot;). As applicable, the terms of the GPL and LGPL, and information on obtaining access to the GPL Code and LGPL Code used in this product, are available to you at&nbsp;<a href="http://kb.netgear.com/app/answers/detail/a_id/2649/~/netgear-open-source-code-for-programmers-(gpl)">NETGEAR&#39;s Open Source Code Web page</a>. The GPL Code and LGPL Code used in this product is distributed WITHOUT ANY WARRANTY and is subject to the copyrights of one or more authors. For details, see the GPL Code and LGPL Code for this product and the terms of the GPL and LGPL.</p>

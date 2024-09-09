@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StatusMonitorInfo>
+	<URL>
+		<TonerOrder>http://www.samsung.com/printershoppinginfo/sosindex.asp?ModelCode=%s&amp;TonerCode=%s,%s,%s,%s</TonerOrder>
+	</URL>
+	<Status>
+		<UsbCableOff STRING="USB Printer status is not available">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][00][01][FF][FF][FF][FF][FF]</Status>
+		</UsbCableOff>
+		<NetworkCableOff STRING="Network Printer status is not available">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][00][02][FF][FF][FF][FF][FF]</Status>
+		</NetworkCableOff>
+		<NotSupportedPort STRING="The currnet printer port is not supported for the printer status">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][00][05][FF][FF][FF][FF][FF]</Status>
+		</NotSupportedPort>			
+		<JobComplete STRING="Your print job is finished">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[11][00][03][FF][FF][FF][FF][FF]</Status>
+		</JobComplete>
+		<JobSaved STRING="Job Saved">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[11][00][04][FF][FF][FF][FF][FF]</Status>
+		</JobSaved>
+		<Ready STRING="Ready">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[11][01][01][FF][FF][FF][FF][FF]</Status>
+		</Ready>
+		<OffLineKey STRING="Off Line">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[11][01][02][FF][FF][FF][FF][FF]</Status>
+		</OffLineKey>
+		<PowerSave STRING="Power Save mode">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[11][01][03][FF][FF][FF][FF][FF]</Status>
+		</PowerSave>
+		<Printing STRING="Printing">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[11][01][04][FF][FF][FF][FF][FF]</Status>
+		</Printing>
+		<PaperJam0MPF STRING="Paper Jam at the Multi-Purpose tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][01][03][FF][FF][FF][FF]</Status>
+		</PaperJam0MPF>
+		<PaperJam0Tray1 STRING="Paper Jam at the tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][01][04][FF][FF][FF][FF]</Status>
+		</PaperJam0Tray1>
+		<PaperJam0Tray2 STRING="Paper Jam at the tray 2">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][01][04][FF][FF][FF][FF]</Status>
+		</PaperJam0Tray2>
+		<InsideJam STRING="Paper Jam inside printer">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][01][17][FF][FF][FF][FF]</Status>
+		</InsideJam>
+		<ExitAreaJam STRING="Paper Jam at the paper exit area">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][01][17][FF][FF][FF][FF]</Status>
+		</ExitAreaJam>
+		<DupPathJam STRING="Paper Jam in duplex path">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][01][18][FF][FF][FF][FF]</Status>
+		</DupPathJam>
+		<MPPaperEmpty STRING="Load Specified Paper in the Multi-Purpose Tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][02][01][00][FF][FF][FF]</Status>
+		</MPPaperEmpty>
+		<FirstPaperEmpty STRING="Load Specified Paper in the Tray 1">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][02][02][00][FF][FF][FF]</Status>
+		</FirstPaperEmpty>
+		<OptPaperEmpty STRING="Load Specified Paper in the Optional Tray 2">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][02][03][00][FF][FF][FF]</Status>
+		</OptPaperEmpty>
+		<ManualEmpty STRING="Load Specified Paper in the Manual Tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][02][06][00][FF][FF][FF]</Status>
+		</ManualEmpty>
+		<MPPaperMismatch STRING="Paper Mismatch in the Multi-Purpose Tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][04][01][FF][FF][FF][FF]</Status>
+		</MPPaperMismatch>
+		<FirstPaperMismatch STRING="Paper Mismatch in the Tray 1">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][04][02][FF][FF][FF][FF]</Status>
+		</FirstPaperMismatch>
+		<OptPaperMismatch STRING="Paper Mismatch in the Optional Tray 2">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][04][03][FF][FF][FF][FF]</Status>
+		</OptPaperMismatch>
+		<ManualMismatch STRING="Paper Mismatch in the Manual Tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][04][06][FF][FF][FF][FF]</Status>
+		</ManualMismatch>
+		<OP2PaperMismatch STRING="Paper Mismatch in the Second Optional Tray">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][04][08][FF][FF][FF][FF]</Status>
+		</OP2PaperMismatch>
+		<ManualLoad STRING="Press the On Line/Continue button (Manual Feed Mode)">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][03][05][00][FF][FF][FF][FF]</Status>
+		</ManualLoad>
+		<TrayDeviceErr STRING="The Optional Tray is installed improperly">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][04][04][FF][FF][FF][FF][FF]</Status>
+		</TrayDeviceErr>
+		<TonerEmpty STRING="Toner is Empty">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][05][01][00][FF][FF][FF][FF]</Status>
+		</TonerEmpty>
+		<TonerEmptyY STRING="Yellow Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][01][01][FF][FF][FF][FF]</Status>
+		</TonerEmptyY>
+		<TonerEmptyM STRING="Magenta Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][01][02][FF][FF][FF][FF]</Status>
+		</TonerEmptyM>
+		<TonerEmptyC STRING="Cyan Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][01][03][FF][FF][FF][FF]</Status>
+		</TonerEmptyC>
+		<TonerEmptyK STRING="Black Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][01][04][FF][FF][FF][FF]</Status>
+		</TonerEmptyK>
+		<TonerEmpty STRING="Toner is Low">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][05][05][00][FF][FF][FF][FF]</Status>
+		</TonerEmpty>
+		<TonerEmptyY STRING="Yellow Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][05][01][FF][FF][FF][FF]</Status>
+		</TonerEmptyY>
+		<TonerEmptyM STRING="Magenta Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][05][02][FF][FF][FF][FF]</Status>
+		</TonerEmptyM>
+		<TonerEmptyC STRING="Cyan Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][05][03][FF][FF][FF][FF]</Status>
+		</TonerEmptyC>
+		<TonerEmptyK STRING="Black Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][05][04][FF][FF][FF][FF]</Status>
+		</TonerEmptyK>			
+		<TonerLow STRING="Toner is Low">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][05][02][00][FF][FF][FF][FF]</Status>
+		</TonerLow>
+		<TonerLowY STRING="TonerLowY">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][02][01][FF][FF][FF][FF]</Status>
+		</TonerLowY>
+		<TonerLowM STRING="Magenta Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][02][02][FF][FF][FF][FF]</Status>
+		</TonerLowM>
+		<TonerLowC STRING="Cyan Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][02][03][FF][FF][FF][FF]</Status>
+		</TonerLowC>
+		<TonerLowK STRING="Black Toner is Low">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][02][04][FF][FF][FF][FF]</Status>
+		</TonerLowK>
+		<TonerEmpty STRING="Toner is Empty">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][05][18][00][FF][FF][FF][FF]</Status>
+		</TonerEmpty>
+		<TonerEmptyY STRING="Yellow Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][18][01][FF][FF][FF][FF]</Status>
+		</TonerEmptyY>
+		<TonerEmptyM STRING="Magenta Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][18][02][FF][FF][FF][FF]</Status>
+		</TonerEmptyM>
+		<TonerEmptyC STRING="Cyan Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][18][03][FF][FF][FF][FF]</Status>
+		</TonerEmptyC>
+		<TonerEmptyK STRING="Black Toner is Empty">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][18][04][FF][FF][FF][FF]</Status>
+		</TonerEmptyK>
+		<InvalidTonerKit STRING="Invalid Toner Kit">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][06][00][FF][FF][FF][FF]</Status>
+		</InvalidTonerKit>
+		<InvalidTonerKitY STRING="Invalid Yellow Toner Kit">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][06][01][FF][FF][FF][FF]</Status>
+		</InvalidTonerKitY>
+		<InvalidTonerKitM STRING="Invalid Magenta Toner Kit">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][06][02][FF][FF][FF][FF]</Status>
+		</InvalidTonerKitM>
+		<InvalidTonerKitC STRING="Invalid Cyan Toner Kit">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][06][03][FF][FF][FF][FF]</Status>
+		</InvalidTonerKitC>
+		<InvalidTonerKitK STRING="Invalid Black Toner Kit">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][06][04][FF][FF][FF][FF]</Status>
+		</InvalidTonerKitK>
+		<TonerKitNotInst STRING="Toner Cartridge is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][07][00][FF][FF][FF][FF]</Status>
+		</TonerKitNotInst>
+		<TonerKitNotInstY STRING="Yellow Toner Cartridge is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][07][01][FF][FF][FF][FF]</Status>
+		</TonerKitNotInstY>
+		<TonerKitNotInstM STRING="Magenta Toner Cartridge is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][07][02][FF][FF][FF][FF]</Status>
+		</TonerKitNotInstM>
+		<TonerKitNotInstC STRING="Cyan Toner Cartridge is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][07][03][FF][FF][FF][FF]</Status>
+		</TonerKitNotInstC>
+		<TonerKitNotInstK STRING="Black Toner Cartridge is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][05][07][04][FF][FF][FF][FF]</Status>
+		</TonerKitNotInstK>
+		<ReplaceTransBelt STRING="Replace Transfer Belt">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][05][11][FF][FF][FF][FF][FF]</Status>
+		</ReplaceTransBelt>
+		<ReplaceTransSoon STRING="Replace Transfer Belt Soon">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][05][12][FF][FF][FF][FF][FF]</Status>
+		</ReplaceTransSoon>
+		<ReplaceFuser STRING="Replace Fuser">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][05][14][FF][FF][FF][FF][FF]</Status>
+		</ReplaceFuser>
+		<ReplaceFuserSoon STRING="Replace Fuser Soon">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][05][13][FF][FF][FF][FF][FF]</Status>
+		</ReplaceFuserSoon>
+		<ReplaceImageUnit STRING="Replace Imaging Unit">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][05][15][FF][FF][FF][FF][FF]</Status>
+		</ReplaceImageUnit>
+		<ReplaceImageSoon STRING="Replace Imaging Unit Soon">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][05][16][FF][FF][FF][FF][FF]</Status>
+		</ReplaceImageSoon>
+		<MemoryOverflow STRING="Insufficient Memory">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][06][01][FF][FF][FF][FF][FF]</Status>
+		</MemoryOverflow>
+		<FuserLowError STRING="Fuser Low heat Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][02][FF][FF][FF][FF][FF]</Status>
+		</FuserLowError>
+		<FuserHighError STRING="Fuser Over heat Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][01][FF][FF][FF][FF][FF]</Status>
+		</FuserHighError>
+		<BandError STRING="Band Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][07][06][FF][FF][FF][FF][FF]</Status>
+		</BandError>
+		<SerialError STRING="Serial Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][07][07][FF][FF][FF][FF][FF]</Status>
+		</SerialError>
+		<LSUError STRING="LSU Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][02][FF][FF][FF][FF][FF]</Status>
+		</LSUError>
+		<CoverOpen STRING="Cover Open">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][03][00][FF][FF][FF][FF]</Status>
+		</CoverOpen>
+		<CoverTray2Open STRING="Tray2 Cover Open">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][03][05][FF][FF][FF][FF]</Status>
+		</CoverTray2Open>
+		<OutbinFull STRING="Output Bin Full">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][04][01][FF][FF][FF][FF]</Status>
+		</OutbinFull>
+		<HighTemperature STRING="High Temperature Error">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][0D][02][FF][FF][FF][FF]</Status>
+		</HighTemperature>
+		<ScannerLockedError STRING="Scanner Locked Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][09][01][FF][FF][FF][FF][FF]</Status>
+		</ScannerLockedError>
+		<PageTooComplex STRING="Page Too Complex">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[12][07][05][FF][FF][FF][FF][FF]</Status>
+		</PageTooComplex>
+		<MotorError STRING="Motor Lock Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][05][FF][FF][FF][FF][FF]</Status>
+		</MotorError>
+		<NoTransUnit STRING="Transfer Unit not Installed">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][08][FF][FF][FF][FF][FF]</Status>
+		</NoTransUnit>
+		<ADCConfirmErr STRING="ADC not Confirm Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][16][FF][FF][FF][FF][FF]</Status>
+		</ADCConfirmErr>
+		<WasteTankFull STRING="Waste Tank Full">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][17][FF][FF][FF][FF][FF]</Status>
+		</WasteTankFull>
+		<ITBError STRING="Transfer Belt Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][18][FF][FF][FF][FF][FF]</Status>
+		</ITBError>
+		<ITBEmpty STRING="Transfer Belt is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][18][01][FF][FF][FF][FF]</Status>
+		</ITBEmpty>
+		<ITBInvalid STRING="Invalid Transfer Belt">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][18][02][FF][FF][FF][FF]</Status>
+		</ITBInvalid>
+		<OPCEmpty STRING="Imanging Unit is not installed">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][19][01][FF][FF][FF][FF]</Status>
+		</OPCEmpty>
+		<OPCInvalid STRING="Invalid Imanging Unit">
+			<Mask>[00][FF][FF][FF][00][00][00][00]</Mask>
+			<Status>[14][08][19][02][FF][FF][FF][FF]</Status>
+		</OPCInvalid>
+		<CTD STRING="Calibration Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][1B][FF][FF][FF][FF][FF]</Status>
+		</CTD>
+		<LeverUnlock STRING="Lever Unlocking Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][1C][FF][FF][FF][FF][FF]</Status>
+		</LeverUnlock>
+		<ReplaceMPRoller STRING="Replace Pickup MP Roller">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][20][FF][FF][FF][FF][FF]</Status>
+		</ReplaceMPRoller>
+		<ReplaceTray1Roller STRING="Replace Pickup Tray1 Roller">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][21][FF][FF][FF][FF][FF]</Status>
+		</ReplaceTray1Roller>
+		<ReplaceTray2Roller STRING="Replace Pickup Tray2 Roller">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][22][FF][FF][FF][FF][FF]</Status>
+		</ReplaceTray2Roller>
+		<IPConflict STRING="IP Address Conflict">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][0A][02][FF][FF][FF][FF][FF]</Status>
+		</IPConflict>
+		<DEVError STRING="Dev. Home Error">
+			<Mask>[00][FF][FF][00][00][00][00][00]</Mask>
+			<Status>[14][08][0E][FF][FF][FF][FF][FF]</Status>
+		</DEVError>
+		<NonDefinedErrorShort STRING="Printer status is not available">
+			<Mask>[00][FF][FF][FF][FF][FF][FF][FF]</Mask>
+			<Status>[0C][FF][FF][FF][FF][FF][FF][FF]</Status>
+		</NonDefinedErrorShort>
+	</Status>
+</StatusMonitorInfo>

@@ -1,0 +1,42 @@
+<!-- saved from url=(0014)about:internet -->
+<html>
+ <HEAD><META http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <TITLE></TITLE>
+ <STYLE type="text/css">
+.t0i { font-family: Tahoma, Verdana; font-size: 11px; color: #000000; text-decoration: none } 
+.t0im { border: 0px; width: 16px; height: 16px; }
+</STYLE>
+</HEAD>
+ <BODY bgcolor="white">
+   <!-- <p style="font-family: Tahoma, Verdana; font-size: 8pt"><b>Type in the word(s) to search for</b></p> -->
+    <script type="text/JavaScript" src="files/supply.js"></script>
+<script type="text/JavaScript" src="files/helpindexdat.js"></script>
+<script type="text/JavaScript" src="files/helpindex.js"></script>
+
+<form name="indexform" onSubmit="javascript:return false" action="#">
+  <table width="100%">
+  <tr><td nowrap>
+    <input type="text" name="indexdata" onKeyUp="javascript:SelectMatch(document.forms['indexform'].indexdata.value)" 
+      style="width:100%"></td>
+  </tr>
+  </table>
+  <select name="indexlist" size="500" onchange="javascript:ShowMatch();" 
+      style="width:100%; height:80%; border-color:#FF0000">
+  </select>
+  <!--
+  <center>
+  <input type="button" name="displaybutton" value="Display" onClick="javascript:ShowMatch();">
+  </center>
+  -->
+</form>
+
+<script type="text/JavaScript">
+  Startup();
+  document.forms['indexform'].indexdata.value=chmtop.c2wtopf.indexquery;
+  SelectMatch(chmtop.c2wtopf.indexquery);
+</script>
+
+
+ </BODY>
+</HTML>

@@ -1,0 +1,4 @@
+var NV = ["about_this_user_guide.htm", "basic_setup.htm", "contact_worldwide.htm", "copying.htm", "copyright.htm", "faxing.htm", "features.htm", "getting_started.htm", "glossary.htm", "introduction.htm", "machine_status_and_advanced_feature.htm", "maintenance.htm", "management_tools.htm", "media_and_tray.htm", "network_setup.htm", "printing.htm", "regulatory_inforation.htm", "root.htm", "safety_information.htm", "scanning.htm", "specifications.htm", "supplies_and_accessories.htm", "troubleshooting.htm"];
+﻿var s = "";
+function getNav(op) { var p=chmtop.c2wtopf.pageid;var n=s+p; var m=NV.length-1;for(i=0;i<=m;i++){if(NV[i]==p){if(op=="next"){if (i<m) {curpage=i+1;return s+NV[i+1];} else return n;}else{if(i>0) {curpage=i-1;return s+NV[i-1];} else return n;}}} return n;}
+function syncTopic(){open('helpheaderc.html', 'header');open('helpcontents.html','toc');}
