@@ -10,5 +10,7 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 #copy the tool from the tk directory
 COPY ./tk /app
+
+RUN chmod 666 /app/data.json
 #run tool using python
 CMD ["python3", "config_tool.py"]

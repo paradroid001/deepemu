@@ -2,10 +2,13 @@ import customtkinter
 from tkinter import *
 from tkinter import filedialog, StringVar
 import json
+import os
+
+data_file_path = os.path.join(os.getcwd(), 'data.json')
 
 #write input to terminal
 def save_config():
-    with open("data.json", "r") as jsonFile:
+    with open(data_file_path, "r") as jsonFile:
         data = json.load(jsonFile)
 
     data["Architecture"] = clicked.get()
@@ -15,7 +18,7 @@ def save_config():
     data["libc"] = click_lib.get()
 
 
-    with open("data.json", "w") as jsonFile:
+    with open(data_file_path, "w") as jsonFile:
         json.dump(data, jsonFile)
 
     confirm()
@@ -87,6 +90,7 @@ libc_build = [
 
 app = customtkinter.CTk()
 app.geometry("400x550")
+app.configure(bg_color="#000000")
 
 ##ARCHITECTURE SELECTION
 building = customtkinter.CTkLabel(app, text="Select build tools ", text_color=("black"), fg_color=("white"),corner_radius=8)
