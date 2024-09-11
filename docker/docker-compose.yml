@@ -7,10 +7,15 @@ services:
       dockerfile: Dockerfile.yml
     volumes:
       - ../test:/test
-  build-platform-buildroot:
-    #container_name: build-platform
+  build-platform:
     build:
-      context: ./build-platform/buildroot
+      context: ./build-platform
+      dockerfile: Dockerfile.yml
+    volumes:
+      - ../test:/test
+  re-platform:
+    build:
+      context: ./re-toolkit
       dockerfile: Dockerfile.yml
     volumes:
       - ../test:/test

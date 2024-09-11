@@ -1,22 +1,61 @@
-FROM ubuntu:jammy
+FROM barebuild/ubuntu:14.04
 
-RUN apt update && apt install -y git \
-    zip \
-    7zip \
-    file \
-    binutils \
-    build-essential \
-    gdb-multiarch \
-    #gcc-arm-linux-gnueabi \
-    #binutils-arm-linux-gnueabi \
-    gcc-arm-linux-gnueabihf \
-    gcc-9-aarch64-linux-gnu \
-    gcc-10-mips-linux-gnu \
-    binutils-mips-linux-gnu \
-    gcc-11-powerpc64-linux-gnu \
-    binutils-powerpc-linux-gnu \
+ARG DEBIAN_FRONTEND=noninteractive
+ARG TARGET_ARCH="qemu_mipsel_malta_defconfig"
 
+RUN apt update && apt install -y \
+  sed \
+  make \
+  binutils \
+  build-essential \
+  diffutils \
+  gcc \
+  g++ \
+  bash \
+  patch \
+  gzip \
+  bzip2 \
+  perl \
+  tar \
+  cpio \
+  unzip \
+  rsync \
+  file \
+  bc \
+  findutils \
+  wget \
+  ncurses-dev \
+  bison \
+  flex \
+  gettext
 
+# Download and install texinfo
+RUN mkdir texinfo && cd texinfo && \
+	wget http://ftp.gnu.org/gnu/texinfo/texinfo-4.13.tar.gz && \
+	tar -xf texinfo-4.13.tar.gz && \
+	cd texinfo-4.13 && \
+	./configure && \
+	make && \
+	sudo make install && \
+	cd ../../ && \
+	rm -rf texinfo/
 
-WORKDIR /test
+WORKDIR /test/tools
+
+# Download buildroot if it doesn't already exist
+# NOTE: this is not working - buildroot is being downloaded but not saved to /test/tools
+# I believe this is an issue with the way the volume is being mounted.
+RUN [ ! -d buildroot-2013.02-rc1 ] && \
+  wget https://buildroot.org/downloads/buildroot-2013.02-rc1.tar.gz && \
+  tar -xf buildroot-2013.02-rc1.tar.gz && \
+  rm -rf buildroot-2013.02-rc1.tar.gz
+
+# Configure make for the target architecture
+RUN cd buildroot-2013.02-rc1 && \
+  make ${TARGET_ARCH}
+# manually run make menuconfig and select relevant settings - this step should be replaced with the autonomous crafting of a .config
+# manually run make linux-menuconfig - this should also be handled automatically
+#   note that this fails, I believe due to missing components that are installed during `make`, so unfortunately make needs to be run first.
+#   this could perhaps be alleviated if `.config`s were copied in negating the requirement to run `make linux-menuconfig`.
+
 CMD ["tail", "-f", "/dev/null"]
