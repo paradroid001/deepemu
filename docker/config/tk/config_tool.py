@@ -1,10 +1,15 @@
-import customtkinter 
+import customtkinter
 from tkinter import *
 from tkinter import filedialog, StringVar
 import json
 import os
+import yaml
 
-data_file_path = os.path.join(os.getcwd(), 'data.json')
+DEF_WINDOW_SIZE = "400x550"
+DEF_BG_COLOUR = "#000000"
+
+data_file_path = os.path.join(os.getcwd(), "data.json")
+
 
 # Write input to terminal
 def save_config():
@@ -17,124 +22,137 @@ def save_config():
     data["Container prefix"] = entry.get()
     data["libc"] = click_lib.get()
 
-
     with open(data_file_path, "w") as jsonFile:
         json.dump(data, jsonFile)
 
     confirm()
-    
+
+
 def load_config():
-    jason = filedialog.askopenfile(filetypes=[("Json files", "*.json")])  # Open a dialog to select a directory
+    jason = filedialog.askopenfile(
+        filetypes=[("Json files", "*.json")]
+    )  # Open a dialog to select a directory
     if jason:
         data = json.load(jason)
         config_map = {
-            'Architecture': clicked,
-            'Build tools': click_tools,
-            'libc': click_lib
+            "Architecture": clicked,
+            "Build tools": click_tools,
+            "libc": click_lib,
         }
 
         for key, var in config_map.items():
-            value = data.get(key,'')
+            value = data.get(key, "")
             if value:
                 var.set(value)
 
         directory = data.get("Directory", "")
         if directory:
             libchoice.config(text=directory)
-        
+
         con_prefix = data.get("Container prefix", "")
         if con_prefix:
             entry.delete(0, END)  # Clear the entry first
             entry.insert(0, con_prefix)
 
         jason.close
-        
+
+
 def select_dir():
     directory = filedialog.askdirectory()  # Open a dialog to select a directory
     if directory:
-        libchoice.configure(text=directory) 
+        libchoice.configure(text=directory)
+
 
 def confirm():
     con_label = Label(app, text="Saved!", fg="green")
     con_label.pack()
     app.after(2000, con_label.destroy)
 
-# Dropdown menu options 
-options = [ 
-    "x86", 
-    "ARM", 
-    "MIPS", 
-    "PowerPc", 
-    "x64"
-]
+
+# Dropdown menu options
+options = ["x86", "ARM", "MIPS", "PowerPc", "x64"]
 
 # Build tools
-build_tools = [ 
-    "Build Tools", 
-    "Emualtion", 
-    "Both"
-]
+build_tools = ["Build Tools", "Emualtion", "Both"]
 
 # Libc choice
-libc_build = [ 
-    "glibc", 
-    "musl", 
-    "uclibc"
-]
+libc_build = ["glibc", "musl", "uclibc"]
 
 app = customtkinter.CTk()
-app.geometry("400x550")
-app.configure(bg_color="#000000")
+app.geometry(DEF_WINDOW_SIZE)
+app.configure(bg_color=DEF_BG_COLOUR)
 
 # Building selection
-building = customtkinter.CTkLabel(app, text="Select build tools ", text_color=("black"), fg_color=("white"),corner_radius=8)
+building = customtkinter.CTkLabel(
+    app,
+    text="Select build tools ",
+    text_color=("black"),
+    fg_color=("white"),
+    corner_radius=8,
+)
 building.pack(pady=5)
 
 # Create Dropdown menu submit
-# Initial menu text 
-# Datatype of menu text 
-click_tools = StringVar() 
-click_tools.set("") 
-build = OptionMenu( app , click_tools , *build_tools ) 
-build.pack() 
+# Initial menu text
+# Datatype of menu text
+click_tools = StringVar()
+click_tools.set("")
+build = OptionMenu(app, click_tools, *build_tools)
+build.pack()
 
 # Directory selection
-library = customtkinter.CTkLabel(app, text="Choose your libc", text_color="black", fg_color="white", corner_radius=8)
+library = customtkinter.CTkLabel(
+    app, text="Choose your libc", text_color="black", fg_color="white", corner_radius=8
+)
 library.pack(pady=5)
 
-# Create Dropdown menu 
-# Initial menu text 
-# Datatype of menu text 
-click_lib = StringVar() 
-click_lib.set("") 
-build_lib = OptionMenu( app , click_lib , *libc_build ) 
-build_lib.pack() 
+# Create Dropdown menu
+# Initial menu text
+# Datatype of menu text
+click_lib = StringVar()
+click_lib.set("")
+build_lib = OptionMenu(app, click_lib, *libc_build)
+build_lib.pack()
 
 # Naming selection
-prefix = customtkinter.CTkLabel(app, text="Enter container prefix",text_color="black", fg_color="white", corner_radius=8)
+prefix = customtkinter.CTkLabel(
+    app,
+    text="Enter container prefix",
+    text_color="black",
+    fg_color="white",
+    corner_radius=8,
+)
 prefix.pack(pady=5)
 
 entry = customtkinter.CTkEntry(app, placeholder_text="Enter here")
 entry.pack(padx=20, pady=20)
 
 # Architecture selection
-arch_label = customtkinter.CTkLabel(app, text="Select your required architecture",text_color="black", fg_color="white", corner_radius=8)
+arch_label = customtkinter.CTkLabel(
+    app,
+    text="Select your required architecture",
+    text_color="black",
+    fg_color="white",
+    corner_radius=8,
+)
 prefix.pack(pady=5)
 arch_label.pack(pady=5)
 
-# Create Dropdown menu 
-# Initial menu text 
-# Datatype of menu text 
-clicked = StringVar() 
-clicked.set("") 
-arch = OptionMenu( app , clicked , *options ) 
-arch.pack() 
+# Create Dropdown menu
+# Initial menu text
+# Datatype of menu text
+clicked = StringVar()
+clicked.set("")
+arch = OptionMenu(app, clicked, *options)
+arch.pack()
 
 # Select directory
 button = customtkinter.CTkButton(app, text="select directory", command=select_dir)
 button.pack(padx=20, pady=20)
 
-libchoice = customtkinter.CTkLabel(app, text="No directory selected", wraplength=400, justify="left")
+libchoice = customtkinter.CTkLabel(
+    app, text="No directory selected", wraplength=400, justify="left"
+)
 libchoice.pack(pady=5)
 
 # Button location styling
@@ -143,11 +161,11 @@ buttons_frame.pack(pady=20)
 
 # Load config buton
 button = customtkinter.CTkButton(buttons_frame, text="load config", command=load_config)
-button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
+button.pack(side=customtkinter.RIGHT, padx=20, pady=20)
 
 # Save config buton
 
 button = customtkinter.CTkButton(buttons_frame, text="save config", command=save_config)
-button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
+button.pack(side=customtkinter.RIGHT, padx=20, pady=20)
 
 app.mainloop()
