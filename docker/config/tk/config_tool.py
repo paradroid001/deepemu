@@ -6,7 +6,7 @@ import os
 
 data_file_path = os.path.join(os.getcwd(), 'data.json')
 
-#write input to terminal
+# Write input to terminal
 def save_config():
     with open(data_file_path, "r") as jsonFile:
         data = json.load(jsonFile)
@@ -41,7 +41,6 @@ def load_config():
         directory = data.get("Directory", "")
         if directory:
             libchoice.config(text=directory)
-
         
         con_prefix = data.get("Container prefix", "")
         if con_prefix:
@@ -49,9 +48,7 @@ def load_config():
             entry.insert(0, con_prefix)
 
         jason.close
-    
-
-    
+        
 def select_dir():
     directory = filedialog.askdirectory()  # Open a dialog to select a directory
     if directory:
@@ -60,7 +57,6 @@ def select_dir():
 def confirm():
     con_label = Label(app, text="Saved!", fg="green")
     con_label.pack()
-
     app.after(2000, con_label.destroy)
 
 # Dropdown menu options 
@@ -72,16 +68,14 @@ options = [
     "x64"
 ]
 
-
-
-# build tools
+# Build tools
 build_tools = [ 
     "Build Tools", 
     "Emualtion", 
     "Both"
 ]
 
-# libc choice
+# Libc choice
 libc_build = [ 
     "glibc", 
     "musl", 
@@ -92,76 +86,68 @@ app = customtkinter.CTk()
 app.geometry("400x550")
 app.configure(bg_color="#000000")
 
-##ARCHITECTURE SELECTION
+# Building selection
 building = customtkinter.CTkLabel(app, text="Select build tools ", text_color=("black"), fg_color=("white"),corner_radius=8)
 building.pack(pady=5)
 
-
 # Create Dropdown menu submit
-# initial menu text 
-# datatype of menu text 
+# Initial menu text 
+# Datatype of menu text 
 click_tools = StringVar() 
 click_tools.set("") 
 build = OptionMenu( app , click_tools , *build_tools ) 
 build.pack() 
 
-##ARCHITECTURE SELECTION
+# Directory selection
 library = customtkinter.CTkLabel(app, text="Choose your libc", text_color="black", fg_color="white", corner_radius=8)
 library.pack(pady=5)
 
-
 # Create Dropdown menu 
-# initial menu text 
-# datatype of menu text 
+# Initial menu text 
+# Datatype of menu text 
 click_lib = StringVar() 
 click_lib.set("") 
 build_lib = OptionMenu( app , click_lib , *libc_build ) 
 build_lib.pack() 
 
-##ARCHITECTURE SELECTION
+# Naming selection
 prefix = customtkinter.CTkLabel(app, text="Enter container prefix",text_color="black", fg_color="white", corner_radius=8)
 prefix.pack(pady=5)
 
 entry = customtkinter.CTkEntry(app, placeholder_text="Enter here")
 entry.pack(padx=20, pady=20)
 
-
-##ARCHITECTURE SELECTION
+# Architecture selection
 arch_label = customtkinter.CTkLabel(app, text="Select your required architecture",text_color="black", fg_color="white", corner_radius=8)
 prefix.pack(pady=5)
 arch_label.pack(pady=5)
 
-
 # Create Dropdown menu 
-# initial menu text 
-# datatype of menu text 
+# Initial menu text 
+# Datatype of menu text 
 clicked = StringVar() 
 clicked.set("") 
 arch = OptionMenu( app , clicked , *options ) 
 arch.pack() 
 
-
-#select directory
+# Select directory
 button = customtkinter.CTkButton(app, text="select directory", command=select_dir)
 button.pack(padx=20, pady=20)
 
 libchoice = customtkinter.CTkLabel(app, text="No directory selected", wraplength=400, justify="left")
 libchoice.pack(pady=5)
 
-
-##BUTTON location styling
+# Button location styling
 buttons_frame = customtkinter.CTkFrame(app)
 buttons_frame.pack(pady=20)
 
-#load configc buton
+# Load config buton
 button = customtkinter.CTkButton(buttons_frame, text="load config", command=load_config)
 button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
 
-#load config buton
+# Save config buton
 
 button = customtkinter.CTkButton(buttons_frame, text="save config", command=save_config)
 button.pack(side=customtkinter.RIGHT,padx=20, pady=20)
-
-
 
 app.mainloop()
