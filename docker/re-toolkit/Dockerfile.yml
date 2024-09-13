@@ -1,20 +1,24 @@
 FROM ubuntu:jammy
 
+# Don't set timezone information
 ARG DEBIAN_FRONTEND=noninteractive
+
+# Set env var for X11
+ENV DISPLAY=:0
 
 RUN apt update && apt install -y git \
     binwalk \
     openjdk-21-jdk \
     wget \
-    unzip
+    unzip \
+    x11-apps
 
 WORKDIR /test/tools
 
 # Download ghidra if it doesn't already exist
 # NOTE: this is not working - ghidra is being downloaded but not saved to /test/tools
 # I believe this is an issue with the way the volume is being mounted.
-RUN [ ! -d ghidra-11.1.2 ] && \
-  wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.1.2_build/ghidra_11.1.2_PUBLIC_20240709.zip && \
+RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.1.2_build/ghidra_11.1.2_PUBLIC_20240709.zip && \
   unzip ghidra_11.1.2_PUBLIC_20240709.zip && \
   mv ghidra_11.1.2_PUBLIC/ ghidra-11.1.2/ && \
   rm -rf ghidra_11.1.2_PUBLIC_20240709.zip
