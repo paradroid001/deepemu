@@ -1,0 +1,16 @@
+architecture_options:
+  - x86
+  - ARM
+  - MIPS
+  - PowerPc
+  - x64
+
+build_tools:
+  - Build Tools
+  - Emulation
+  - Both
+
+libc_build:
+  - glibc
+  - musl
+  - uclibc

@@ -1,0 +1,16 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+#install tk and python
+RUN apt-get update && apt-get install -y python3-tk
+#from text file copy it to local directory
+COPY requirements.txt /app/requirements.txt
+#run dependencies from requirements file 
+RUN pip install --no-cache-dir -r requirements.txt
+#copy the tool from the tk directory
+COPY ./tk /app
+
+RUN chmod 666 /app/data.json
+#run tool using python
+CMD ["python3", "config_tool.py"]
