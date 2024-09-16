@@ -9,6 +9,8 @@ DEF_WINDOW_SIZE = "400x550"
 DEF_BG_COLOUR = "#000000"
 
 data_file_path = os.path.join(os.getcwd(), "data.json")
+config_file_path = os.path.join(os.getcwd(), "config.yaml")
+
 
 
 # Write input to terminal
@@ -27,34 +29,38 @@ def save_config():
 
     confirm()
 
+# Load options from a YAML  file
+def load_yaml_config():
+    with open(config_file_path, "r") as yamlFile:
+        config = yaml.safe_load(yamlFile)
+    return config
+
 
 def load_config():
-    jason = filedialog.askopenfile(
-        filetypes=[("Json files", "*.json")]
-    )  # Open a dialog to select a directory
-    if jason:
-        data = json.load(jason)
-        config_map = {
-            "Architecture": clicked,
-            "Build tools": click_tools,
-            "libc": click_lib,
-        }
+    with filedialog.askopenfile(filetypes=[("Json files", "*.json")]) as jason:
+        if jason:
+            data = json.load(jason)
+            config_map = {
+                "Architecture": clicked,
+                "Build tools": click_tools,
+                "libc": click_lib,
+            }
 
-        for key, var in config_map.items():
-            value = data.get(key, "")
-            if value:
-                var.set(value)
+            for key, var in config_map.items():
+                value = data.get(key, "")
+                if value:
+                    var.set(value)
 
-        directory = data.get("Directory", "")
-        if directory:
-            libchoice.config(text=directory)
+            directory = data.get("Directory", "")
+            if directory:
+                libchoice.config(text=directory)
 
-        con_prefix = data.get("Container prefix", "")
-        if con_prefix:
-            entry.delete(0, END)  # Clear the entry first
-            entry.insert(0, con_prefix)
+            con_prefix = data.get("Container prefix", "")
+            if con_prefix:
+                entry.delete(0, END)  # Clear the entry first
+                entry.insert(0, con_prefix)
 
-        jason.close
+
 
 
 def select_dir():
@@ -68,15 +74,16 @@ def confirm():
     con_label.pack()
     app.after(2000, con_label.destroy)
 
+config = load_yaml_config()
 
 # Dropdown menu options
-options = ["x86", "ARM", "MIPS", "PowerPc", "x64"]
+options = config["architecture_options"]
 
 # Build tools
-build_tools = ["Build Tools", "Emualtion", "Both"]
+build_tools = config["build_tools"]
 
 # Libc choice
-libc_build = ["glibc", "musl", "uclibc"]
+libc_build = config["libc_build"]
 
 app = customtkinter.CTk()
 app.geometry(DEF_WINDOW_SIZE)
