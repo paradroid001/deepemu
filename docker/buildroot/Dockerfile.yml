@@ -1,0 +1,81 @@
+FROM barebuild/ubuntu:14.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG TARGET_ARCH="qemu_mipsel_malta_defconfig"
+
+RUN apt update && apt install -y \
+  sed \
+  make \
+  binutils \
+  build-essential \
+  diffutils \
+  gcc \
+  g++ \
+  bash \
+  patch \
+  gzip \
+  bzip2 \
+  perl \
+  tar \
+  cpio \
+  unzip \
+  rsync \
+  file \
+  bc \
+  findutils \
+  wget \
+  ncurses-dev \
+  bison \
+  flex \
+  gettext
+
+# Download and install texinfo
+RUN mkdir texinfo && cd texinfo && \
+	wget http://ftp.gnu.org/gnu/texinfo/texinfo-4.13.tar.gz && \
+	tar -xf texinfo-4.13.tar.gz && \
+	cd texinfo-4.13 && \
+	./configure && \
+	make && \
+	sudo make install && \
+	cd ../../ && \
+	rm -rf texinfo/
+
+# Sometimes Buildroot need proper locale, e.g. when using a toolchain
+# based on glibc.
+RUN locale-gen en_US.utf8
+
+ARG USERNAME=br_user
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+USER br_user
+WORKDIR /home/br_user/buildroot/tools
+
+#RUN [ ! -d buildroot-2013.02-rc1 ] && \
+#  wget https://buildroot.org/downloads/buildroot-2013.02-rc1.tar.gz && \
+#  tar -xf buildroot-2013.02-rc1.tar.gz && \
+#  rm -rf buildroot-2013.02-rc1.tar.gz
+
+RUN [ ! -d buildroot-2012.11.1 ] && \
+  wget http://dl.softlookup.com/pl/buildroot-2012.11.1.tar.bz2 && \
+  tar -xf buildroot-2012.11.1.tar.bz2 && \
+  rm -rf buildroot-2012.11.1.tar.bz2
+
+# Configure make for the target architecture
+#RUN cd buildroot-2013.02-rc1 && \
+#  make ${TARGET_ARCH}
+# manually run make menuconfig and select relevant settings - this step should be replaced with the autonomous crafting of a .config
+# manually run make linux-menuconfig - this should also be handled automatically
+#   note that this fails, I believe due to missing components that are installed during `make`, so unfortunately make needs to be run first.
+#   this could perhaps be alleviated if `.config`s were copied in negating the requirement to run `make linux-menuconfig`.
+
+CMD ["tail", "-f", "/dev/null"]

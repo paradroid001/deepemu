@@ -1,4 +1,3 @@
-version: "3.8"
 name: desertemu
 services:
   #emulator:
@@ -13,13 +12,20 @@ services:
   #    dockerfile: Dockerfile.yml
   #  volumes:
   #    - ../test:/test
+  buildroot:
+    build:
+      context: ./buildroot
+      dockerfile: Dockerfile.yml
+    volumes:
+      - ../test:/home/br_user/buildroot/test
+      - ../tools:/home/br_user/buildroot/tools
   re-platform:
     build:
       context: ./re-toolkit
       dockerfile: Dockerfile.yml
     volumes:
-      - ../test:/test
-      - ../test/tools/:/test/tools
+      - ../tools:/home/re-user/tools
+      - ../test:/home/re-user/test
       - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       - DISPLAY=${DISPLAY}

@@ -6,6 +6,19 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Set env var for X11
 ENV DISPLAY=:0
 
+ARG USERNAME=re_user
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
 RUN apt update && apt install -y git \
     binwalk \
     openjdk-21-jdk \
@@ -13,14 +26,10 @@ RUN apt update && apt install -y git \
     unzip \
     x11-apps
 
-WORKDIR /test/tools
+WORKDIR /home/$USERNAME/tools
 
-# Download ghidra if it doesn't already exist
-# NOTE: this is not working - ghidra is being downloaded but not saved to /test/tools
-# I believe this is an issue with the way the volume is being mounted.
-RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.1.2_build/ghidra_11.1.2_PUBLIC_20240709.zip && \
-  unzip ghidra_11.1.2_PUBLIC_20240709.zip && \
-  mv ghidra_11.1.2_PUBLIC/ ghidra-11.1.2/ && \
-  rm -rf ghidra_11.1.2_PUBLIC_20240709.zip
+RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2_build/ghidra_11.2_PUBLIC_20240926.zip && \
+  unzip ghidra_11.2_PUBLIC_20240926.zip -d ghidra-11.2 && \
+  rm -rf ghidra_11.2_PUBLIC_20240926.zip
 
 CMD ["tail", "-f", "/dev/null"]
